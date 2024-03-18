@@ -3,10 +3,10 @@ name: Docker Compose Test Workflow
 on:
     push:
         branches:
-            - main # Set to your default branch
+            - main
     pull_request:
         branches:
-            - main # Set to your default branch
+            - main
 
 jobs:
     build-and-test:
