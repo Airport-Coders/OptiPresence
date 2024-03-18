@@ -12,3 +12,6 @@ services:
         command: yarn test
         volumes:
             - ./scaffold-op:/scaffold-op
+        depends_on:
+            scaffold-build:
+                condition: service_completed_successfully

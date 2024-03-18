@@ -1,0 +1,27 @@
+name: Docker Compose Test Workflow
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: Test containers
+              run: docker compose -f "docker-compose-test.yml" up --build
+
+            - name: Get scaffold-test logs
+              run: docker compose -f "docker-compose-test.yml" logs scaffold-test
+
+            - name: Cleanup
+              run: docker compose -f "docker-compose-test.yml" down
