@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+    scaffold-build:
+        extends:
+            file: common-services.yml
+            service: scaffold-build
+
+    scaffold-deploy:
+        build:
+            context: ./scaffold-op
+            dockerfile: Dockerfile
+        command: yarn deploy --network optimismSepolia
+        volumes:
+            - ./scaffold-op:/scaffold-op
+        env_file:
+            - .env
+        depends_on:
+            scaffold-build:
+                condition: service_completed_successfully

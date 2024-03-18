@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+    scaffold-build:
+        extends:
+            file: common-services.yml
+            service: scaffold-build
+
+    scaffold-chain:
+        build:
+            context: ./scaffold-op
+            dockerfile: Dockerfile
+        command: yarn chain
+        volumes:
+            - ./scaffold-op:/scaffold-op
+        ports:
+            - '8545:8545'
+        depends_on:
+            scaffold-build:
+                condition: service_completed_successfully
+        healthcheck:
+            test: ['CMD', 'curl', '-f', 'http://localhost:8545']
+            interval: 5s
+            timeout: 5s
+            retries: 5
+
+    scaffold-deploy:
+        build:
+            context: ./scaffold-op
+            dockerfile: Dockerfile
+        command: /bin/sh -c "yarn deploy --network scaffold-chain && nodemon --exec 'yarn deploy --network scaffold-chain'"
+        volumes:
+            - ./scaffold-op:/scaffold-op
+        depends_on:
+            scaffold-chain:
+                condition: service_healthy
+
+    scaffold-next:
+        build:
+            context: ./scaffold-op
+            dockerfile: Dockerfile
+        command: yarn start
+        depends_on:
+            scaffold-chain:
+                condition: service_healthy
+        volumes:
+            - ./scaffold-op:/scaffold-op
+        ports:
+            - '3000:3000'
