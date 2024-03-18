@@ -1,0 +1,9 @@
+{
+	"watch": ["./packages/hardhat/contracts", "./packages/hardhat/deploy"],
+	"ext": "sol,ts",
+	"delay": "2500",
+	"ignore": ["*.test.ts", "*.spec.ts", "node_modules/"],
+	"env": {
+		"NODE_ENV": "development"
+	}
+}
