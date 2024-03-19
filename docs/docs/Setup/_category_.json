@@ -3,6 +3,6 @@
 	"position": 0,
 	"link": {
 		"type": "generated-index",
-		"description": "How to set up your environment to use the project"
+		"description": "How to set up your environment to use the project in development or deployment."
 	}
 }
