@@ -7,6 +7,8 @@ import { WagmiProvider } from 'wagmi';
 import { optimismSepolia, hardhat } from 'wagmi/chains';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
+import { Toaster } from 'react-hot-toast';
+
 const config = getDefaultConfig({
 	appName: 'Airport Coders',
 	projectId: 'YOUR_PROJECT_ID',
@@ -21,6 +23,7 @@ function App({ Component, pageProps }: AppProps) {
 		<WagmiProvider config={config}>
 			<QueryClientProvider client={client}>
 				<RainbowKitProvider locale="en">
+					<Toaster position="top-center" />
 					<Component {...pageProps} />
 				</RainbowKitProvider>
 			</QueryClientProvider>
