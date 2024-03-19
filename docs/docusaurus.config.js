@@ -3,11 +3,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Airport Coders',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Airport Coders',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://hackathon-nearx-airport-coders.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/optimism/',
@@ -72,7 +72,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          
+
         ],
       },
       footer: {
