@@ -32,9 +32,9 @@ cd optimism
 
 On the root of the project, you will find a `.env.example` file. You need to create a `.env` file and copy the content of the `.env.example` file to it. Then, you need to fill in the environment variables with the required values.
 
-```bash
-ALCHEMY_API_KEY=""
-DEPLOYER_PRIVATE_KEY=""
+```bash title=".env"
+ALCHEMY_API_KEY="YOUR_ALCHEMY_API_KEY"
+DEPLOYER_PRIVATE_KEY="YOUR_DEPLOY_WALLET_PRIVATE_KEY"
 ```
 
 You can get the `ALCHEMY_API_KEY` by creating an account on [Alchemy](https://www.alchemy.com/), and [creating an alchemy app](https://cro-docs.alchemy.com/guides/getting-started#id-1.create-an-alchemy-app). The `DEPLOYER_PRIVATE_KEY` is the private key of the account that will deploy the contracts on testnet, you can follow the instructions on the [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key) to get it.
