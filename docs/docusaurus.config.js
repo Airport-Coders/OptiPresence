@@ -4,7 +4,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 const config = {
 	title: 'Airport Coders',
 	tagline: 'Airport Coders',
-	favicon: 'img/favicon.ico',
+	favicon: 'img/logo.png',
 
 	// Set the production url of your site here
 	url: 'https://airport-coders.github.io/',
@@ -53,7 +53,7 @@ const config = {
 
 				logo: {
 					alt: 'Home Logo',
-					src: 'img/logo.svg',
+					src: 'img/logo.png',
 				},
 				items: [
 					{
