@@ -33,7 +33,7 @@ Now with all the prerequisites installed and the project cloned, you can start t
 <TabItem value="docker-compose-dev">
 
 ```bash
-docker compose -f docker-compose-dev.yml up --build
+docker compose -f docker-compose-dev.yml up
 ```
 
 </TabItem>
@@ -41,7 +41,7 @@ docker compose -f docker-compose-dev.yml up --build
 <TabItem value="docker-compose-deploy">
 
 ```bash
-docker compose -f docker-compose-deploy.yml up --build
+docker compose -f docker-compose-deploy.yml up
 ```
 
 </TabItem>
@@ -49,7 +49,7 @@ docker compose -f docker-compose-deploy.yml up --build
 <TabItem value="docker-compose-test">
 
 ```bash
-docker compose -f docker-compose-test.yml up --build
+docker compose -f docker-compose-test.yml up
 ```
 
 </TabItem>
