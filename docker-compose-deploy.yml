@@ -7,11 +7,11 @@ services:
 
     scaffold-deploy:
         build:
-            context: ./scaffold-op
+            context: ./smartcontract
             dockerfile: Dockerfile
         command: yarn deploy --network optimismSepolia
         volumes:
-            - ./scaffold-op:/scaffold-op
+            - ./smartcontract:/smartcontract
         env_file:
             - .env
         depends_on:
