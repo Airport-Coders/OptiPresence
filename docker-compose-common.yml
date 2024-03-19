@@ -7,3 +7,11 @@ services:
         command: sh -c "rm -rf ./packages/hardhat/deployments && rm -rf ./packages/nextjs/contracts && yarn install"
         volumes:
             - ./smartcontracts:/workspace
+
+    backend-build:
+        build:
+            context: .
+            dockerfile: Dockerfile.Python
+        command: pip3 install --no-cache-dir -r requirements.txt
+        volumes:
+            - ./backend:/workspace
