@@ -1,9 +1,9 @@
-version: "3.8"
+version: '3.8'
 services:
-  scaffold-build:
-    build:
-      context: ./smartcontract
-      dockerfile: Dockerfile
-    command: sh -c "rm -rf ./packages/hardhat/deployments && rm -rf ./packages/nextjs/contracts && yarn install"
-    volumes:
-      - ./smartcontract:/smartcontract
+    scaffold-build:
+        build:
+            context: ./smartcontracts
+            dockerfile: Dockerfile
+        command: sh -c "rm -rf ./packages/hardhat/deployments && rm -rf ./packages/nextjs/contracts && yarn install"
+        volumes:
+            - ./smartcontracts:/smartcontracts

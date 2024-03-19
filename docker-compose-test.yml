@@ -7,11 +7,11 @@ services:
 
     scaffold-test:
         build:
-            context: ./smartcontract
+            context: ./smartcontracts
             dockerfile: Dockerfile
         command: yarn test
         volumes:
-            - ./smartcontract:/smartcontract
+            - ./smartcontracts:/smartcontracts
         depends_on:
             scaffold-build:
                 condition: service_completed_successfully

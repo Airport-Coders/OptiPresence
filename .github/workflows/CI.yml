@@ -5,12 +5,12 @@ on:
         branches:
             - main
         paths:
-            - 'smartcontract/**'
+            - 'smartcontracts/**'
     pull_request:
         branches:
             - main
         paths:
-            - 'smartcontract/**'
+            - 'smartcontracts/**'
 jobs:
     build-and-test:
         runs-on: ubuntu-latest
