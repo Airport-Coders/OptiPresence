@@ -24,13 +24,14 @@ jobs:
               run: |
                   container_id=$(docker ps -aqf "name=scaffold-test")
                   if [ -z "$container_id" ]; then
-                      echo "::error::Failed to get the scaffold-test container ID"
+                  	echo "::error::Failed to get the scaffold-test container ID"
                   else
-                      exit_code=$(docker inspect -f '{{.State.ExitCode}}' $container_id)
-                      echo "Test container exit code: $exit_code"
-                      if [ "$exit_code" != "0" ]; then
-                      echo "::error::Tests failed"
-                      exit 1
+                  	exit_code=$(docker inspect -f '{{.State.ExitCode}}' $container_id)
+                  	echo "Test container exit code: $exit_code"
+                  	if [ "$exit_code" != "0" ]; then
+                  		echo "::error::Tests failed"
+                  		exit 1
+                  	fi
                   fi
 
             - name: Get scaffold-test logs
@@ -41,7 +42,7 @@ jobs:
               if: always()
               with:
                   name: docker-logs
-                  path: .*.log
+                  path: ./*.log
 
             - name: Cleanup
               run: docker compose -f "docker-compose-test.yml" down
