@@ -8,7 +8,7 @@ services:
     scaffold-deploy:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.Node
         command: yarn deploy --network optimismSepolia
         volumes:
             - ./smartcontracts:/workspace

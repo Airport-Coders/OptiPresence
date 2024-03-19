@@ -8,7 +8,7 @@ services:
     scaffold-chain:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.Node
         command: yarn chain
         volumes:
             - ./smartcontracts:/workspace
@@ -26,7 +26,7 @@ services:
     scaffold-deploy:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.Node
         command: /bin/sh -c "yarn deploy --network scaffold-chain && nodemon --exec 'yarn deploy --network scaffold-chain'"
         volumes:
             - ./smartcontracts:/workspace
@@ -37,7 +37,7 @@ services:
     scaffold-next:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.Node
         command: yarn start
         depends_on:
             scaffold-chain:

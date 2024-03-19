@@ -3,7 +3,7 @@ services:
     scaffold-build:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.Node
         command: sh -c "rm -rf ./packages/hardhat/deployments && rm -rf ./packages/nextjs/contracts && yarn install"
         volumes:
             - ./smartcontracts:/workspace
