@@ -7,4 +7,4 @@ RUN apt-get update && apt-get install -y curl gnupg2 && \
 
 RUN yarn global add nodemon
 
-WORKDIR /scaffold-op
+WORKDIR /smartcontract

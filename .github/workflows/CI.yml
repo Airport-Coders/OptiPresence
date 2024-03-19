@@ -6,13 +6,13 @@ on:
             - main
         paths:
             - '.github/**'
-            - 'scaffold-op/**'
+            - 'smartcontract/**'
     pull_request:
         branches:
             - main
         paths:
             - '.github/**'
-            - 'scaffold-op/**'
+            - 'smartcontract/**'
 jobs:
     build-and-test:
         runs-on: ubuntu-latest
