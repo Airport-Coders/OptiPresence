@@ -19,7 +19,7 @@ Before you start, you need to have the following prerequisites:
 You need to have the project cloned in your local machine. You can do this by running the following command on terminal:
 
 ```bash
-git clone git@github.com:Hackathon-NearX-Airport-Coders/optimism.git
+git clone git@github.com:Airport-Coders/optimism.git
 ```
 
 and then, navigate to the project's root directory:
