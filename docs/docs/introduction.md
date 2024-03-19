@@ -6,7 +6,7 @@ slug: /
 
 <!-- Description of project with assets (images and more ) -->
 
-...
+Innovative checkin tracking platform that revolutionizes the way educational and corporate institutions monitor the presence of students and employees, using blockchain network, specifically [Optimism](https://optimism.io/), to ensure transparency, security, and speed, the project offers an immutable and fraud-proof checkin recording system.
 
 ## Problems solved
 
