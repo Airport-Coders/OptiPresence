@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { optimismSepolia, hardhat } from 'wagmi/chains';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-
+import { ChakraProvider } from '@chakra-ui/react';
 import { Toaster } from 'react-hot-toast';
 
 const config = getDefaultConfig({
@@ -24,7 +24,9 @@ function App({ Component, pageProps }: AppProps) {
 			<QueryClientProvider client={client}>
 				<RainbowKitProvider locale="en">
 					<Toaster position="top-center" />
-					<Component {...pageProps} />
+					<ChakraProvider>
+						<Component {...pageProps} />
+					</ChakraProvider>
 				</RainbowKitProvider>
 			</QueryClientProvider>
 		</WagmiProvider>
