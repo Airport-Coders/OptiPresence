@@ -76,6 +76,10 @@ const config = {
 								to: '/',
 								label: 'Introduction',
 							},
+							{
+								to: 'category/setup',
+								label: 'Setup',
+							},
 						],
 					},
 				],
