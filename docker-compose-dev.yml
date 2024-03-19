@@ -7,11 +7,11 @@ services:
 
     scaffold-chain:
         build:
-            context: ./smartcontracts
+            context: .
             dockerfile: Dockerfile
         command: yarn chain
         volumes:
-            - ./smartcontracts:/smartcontracts
+            - ./smartcontracts:/workspace
         ports:
             - '8545:8545'
         depends_on:
@@ -25,24 +25,24 @@ services:
 
     scaffold-deploy:
         build:
-            context: ./smartcontracts
+            context: .
             dockerfile: Dockerfile
         command: /bin/sh -c "yarn deploy --network scaffold-chain && nodemon --exec 'yarn deploy --network scaffold-chain'"
         volumes:
-            - ./smartcontracts:/smartcontracts
+            - ./smartcontracts:/workspace
         depends_on:
             scaffold-chain:
                 condition: service_healthy
 
     scaffold-next:
         build:
-            context: ./smartcontracts
+            context: .
             dockerfile: Dockerfile
         command: yarn start
         depends_on:
             scaffold-chain:
                 condition: service_healthy
         volumes:
-            - ./smartcontracts:/smartcontracts
+            - ./smartcontracts:/workspace
         ports:
             - '3000:3000'
