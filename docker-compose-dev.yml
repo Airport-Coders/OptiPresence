@@ -2,7 +2,7 @@ version: '3.8'
 services:
     scaffold-build:
         extends:
-            file: common-services.yml
+            file: docker-compose-common.yml
             service: scaffold-build
 
     scaffold-chain:

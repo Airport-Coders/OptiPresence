@@ -5,13 +5,11 @@ on:
         branches:
             - main
         paths:
-            - '.github/**'
             - 'smartcontract/**'
     pull_request:
         branches:
             - main
         paths:
-            - '.github/**'
             - 'smartcontract/**'
 jobs:
     build-and-test:
