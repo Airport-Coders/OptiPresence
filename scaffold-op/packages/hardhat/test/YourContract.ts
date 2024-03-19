@@ -22,7 +22,7 @@ describe("YourContract", function () {
       const newGreeting = "Learn Scaffold-OP! :)";
 
       await yourContract.setGreeting(newGreeting);
-      expect(await yourContract.greeting()).to.equal("falling test");
+      expect(await yourContract.greeting()).to.equal(newGreeting);
     });
   });
 });
