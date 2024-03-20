@@ -5,15 +5,10 @@ services:
             file: docker-compose-common.yml
             service: scaffold-build
 
-    frontend-build:
-        extends:
-            file: docker-compose-common.yml
-            service: frontend-build
-
-    backend-build:
-        extends:
-            file: docker-compose-common.yml
-            service: backend-build
+    #frontend-build:
+    #    extends:
+    #        file: docker-compose-common.yml
+    #        service: frontend-build
 
     scaffold-chain:
         build:
@@ -37,48 +32,48 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.Node
-        command: /bin/sh -c "yarn deploy --network scaffold-chain && nodemon --exec 'yarn deploy --network scaffold-chain'"
+        command: yarn deploy --network scaffold-chain
         volumes:
             - ./smartcontracts:/workspace
+
         depends_on:
             scaffold-chain:
                 condition: service_healthy
 
-    scaffold-next:
-        build:
-            context: .
-            dockerfile: Dockerfile.Node
-        command: yarn start
-        depends_on:
-            scaffold-chain:
-                condition: service_healthy
-        volumes:
-            - ./smartcontracts:/workspace
-        ports:
-            - '3000:3000'
+    #scaffold-next:
+    #    build:
+    #        context: .
+    #        dockerfile: Dockerfile.Node
+    #    command: yarn start
+    #    depends_on:
+    #        scaffold-chain:
+    #            condition: service_healthy
+    #    volumes:
+    #        - ./smartcontracts:/workspace
+    #    ports:
+    #        - '3000:3000'
 
-    frontend-serve:
-        build:
-            context: .
-            dockerfile: Dockerfile.Node
-        command: yarn dev
-        volumes:
-            - ./frontend:/workspace
-        ports:
-            - '3333:3333'
-        depends_on:
-            frontend-build:
-                condition: service_completed_successfully
+    #frontend-serve:
+    #    build:
+    #        context: .
+    #        dockerfile: Dockerfile.Node
+    #    command: yarn dev
+    #    volumes:
+    #        - ./frontend:/workspace
+    #    ports:
+    #        - '3333:3333'
+    #    depends_on:
+    #        frontend-build:
+    #            condition: service_completed_successfully
 
     backend-api:
         build:
             context: .
             dockerfile: Dockerfile.Python
-        command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+        command: python3 main.py
         volumes:
             - ./backend:/workspace
-        ports:
-            - '8000:8000'
+            - ./smartcontracts/packages/hardhat/deployments:/deployments
         depends_on:
-            backend-build:
+            scaffold-deploy:
                 condition: service_completed_successfully

@@ -10,11 +10,6 @@ services:
             file: docker-compose-common.yml
             service: frontend-build
 
-    backend-build:
-        extends:
-            file: docker-compose-common.yml
-            service: backend-build
-
     scaffold-deploy:
         build:
             context: .
@@ -47,13 +42,12 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.Python
-        command: uvicorn main:app --host 0.0.0.0 --port 8000
+        command: python3 main.py
         volumes:
             - ./backend:/workspace
+            - ./smartcontracts/packages/hardhat/deployments:/deployments
         env_file:
             - .env
         depends_on:
-            backend-build:
+            scaffold-deploy:
                 condition: service_completed_successfully
-        ports:
-            - '8000:8000'

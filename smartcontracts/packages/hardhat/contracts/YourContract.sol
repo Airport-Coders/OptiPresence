@@ -20,6 +20,12 @@ contract YourContract {
 	uint256 public totalCounter = 0;
 	mapping(address => uint) public userGreetingCounter;
 
+	event CheckinRequest(
+		address indexed requester,
+		string image1,
+		string image2
+	);
+
 	// Events: a way to emit log statements from smart contract that can be listened to by external parties
 	event GreetingChange(
 		address indexed greetingSetter,

@@ -15,11 +15,3 @@ services:
         command: yarn
         volumes:
             - ./frontend:/workspace
-
-    backend-build:
-        build:
-            context: .
-            dockerfile: Dockerfile.Python
-        command: pip3 install --no-cache-dir -r requirements.txt
-        volumes:
-            - ./backend:/workspace
