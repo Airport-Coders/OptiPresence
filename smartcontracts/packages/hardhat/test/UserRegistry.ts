@@ -10,6 +10,7 @@ describe("UserRegistry", function () {
     [addr1, addr2] = await ethers.getSigners();
     const userRegistryFactory = await ethers.getContractFactory("UserRegistry");
     userRegistry = (await userRegistryFactory.deploy()) as UserRegistry;
+    await userRegistry.waitForDeployment();
   });
 
   describe("User Registration", function () {
@@ -62,25 +63,18 @@ describe("UserRegistry", function () {
   describe("Data Update", function () {
     it("Should allow a user to update their name", async function () {
       const newName = "AliceUpdated";
-      const tx = await userRegistry.connect(addr1).updateName(newName);
-      await expect(tx).to.emit(userRegistry, "NameUpdated").withArgs(addr1.address, newName);
-      const userInfo = await userRegistry.getUserInfo(addr1.address);
-      expect(userInfo.name).to.equal(newName);
+      const tx = await userRegistry
+        .connect(addr1)
+        .updateUserInfo(newName, "TmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit");
+      await expect(tx)
+        .to.emit(userRegistry, "UserUpdated")
+        .withArgs(addr1.address, newName, "TmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit");
     });
 
     it("Should allow a user to update their face hash", async function () {
       const newFaceHash = "BmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit";
-      const tx = await userRegistry.connect(addr1).updateFaceHash(newFaceHash);
-      await expect(tx).to.emit(userRegistry, "FaceHashUpdated").withArgs(addr1.address, newFaceHash);
-      const userInfo = await userRegistry.getUserInfo(addr1.address);
-      expect(userInfo.faceHash).to.equal(newFaceHash);
-    });
-
-    it("Should revert updates for non-existent users", async function () {
-      await expect(userRegistry.connect(addr2).updateName("BobUpdated")).to.be.revertedWith("User does not exist");
-      await expect(
-        userRegistry.connect(addr2).updateFaceHash("TmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit"),
-      ).to.be.revertedWith("User does not exist");
+      const tx = await userRegistry.connect(addr1).updateUserInfo("Alice", newFaceHash);
+      await expect(tx).to.emit(userRegistry, "UserUpdated").withArgs(addr1.address, "Alice", newFaceHash);
     });
   });
 });

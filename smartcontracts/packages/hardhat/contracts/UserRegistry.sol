@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
 
-/**
+/*
  * @title UserRegistry
  * @dev Manages user registrations and facial identifiers, with added security features.
  */
@@ -18,10 +18,11 @@ contract UserRegistry {
 		string name,
 		string faceHash
 	); // Event for new user registrations
-	event NameUpdated(address indexed userAddress, string newName); // Event for name updates
-	event FaceHashUpdated(address indexed userAddress, string newFaceHash); // Event for face hash updates
-
-	constructor() {}
+	event UserUpdated(
+		address indexed userAddress,
+		string name,
+		string faceHash
+	); // Event for user information updates
 
 	// Modifier to ensure user exists
 	modifier userExists(address userAddress) {
@@ -54,7 +55,7 @@ contract UserRegistry {
 		_;
 	}
 
-	/**
+	/*
 	 * @dev Registers a new user or updates an existing user's information.
 	 * @param _name User's name.
 	 * @param _faceHash IPFS hash of the user's face image.
@@ -73,18 +74,18 @@ contract UserRegistry {
 		emit UserRegistered(msg.sender, _name, _faceHash);
 	}
 
-	/**
+	/*
 	 * @dev Retrieves user information.
 	 * @param _userAddress Address of the user.
 	 * @return User information.
 	 */
 	function getUserInfo(
 		address _userAddress
-	) public view userExists(_userAddress) returns (User memory) {
+	) external view userExists(_userAddress) returns (User memory) {
 		return users[_userAddress];
 	}
 
-	/**
+	/*
 	 * @dev Retrieves user information for the caller.
 	 * @return User information.
 	 */
@@ -97,25 +98,22 @@ contract UserRegistry {
 		return users[msg.sender];
 	}
 
-	/**
-	 * @dev Updates the user's name.
-	 * @param _name New name.
+	/*
+	 * @dev Updates the user's information.
+	 * @param _name User's name.
+	 * @param _faceHash IPFS hash of the user's face image.
 	 */
-	function updateName(
-		string calldata _name
-	) public userExists(msg.sender) validName(_name) {
-		users[msg.sender].name = _name;
-		emit NameUpdated(msg.sender, _name);
-	}
-
-	/**
-	 * @dev Updates the user's face hash.
-	 * @param _faceHash New IPFS hash of the user's face image.
-	 */
-	function updateFaceHash(
+	function updateUserInfo(
+		string calldata _name,
 		string calldata _faceHash
-	) public userExists(msg.sender) validIPFSHash(_faceHash) {
-		users[msg.sender].faceHash = _faceHash;
-		emit FaceHashUpdated(msg.sender, _faceHash);
+	)
+		external
+		userExists(msg.sender)
+		validIPFSHash(_faceHash)
+		validName(_name)
+	{
+		users[msg.sender] = User(_name, _faceHash);
+
+		emit UserUpdated(msg.sender, _name, _faceHash);
 	}
 }
