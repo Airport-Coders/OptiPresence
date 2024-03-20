@@ -35,6 +35,8 @@ On the root of the project, you will find a `.env.example` file. You need to cre
 ```bash title=".env"
 ALCHEMY_API_KEY="YOUR_ALCHEMY_API_KEY"
 DEPLOYER_PRIVATE_KEY="YOUR_DEPLOY_WALLET_PRIVATE_KEY"
+PINATA_JWT="YOUR_PINATA_JWT"
+PINATA_GATEWAY="YOUR_PINATA_GATEWAY"
 ```
 
-You can get the `ALCHEMY_API_KEY` by creating an account on [Alchemy](https://www.alchemy.com/), and [creating an alchemy app](https://cro-docs.alchemy.com/guides/getting-started#id-1.create-an-alchemy-app). The `DEPLOYER_PRIVATE_KEY` is the private key of the account that will deploy the contracts on testnet, you can follow the instructions on the [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key) to get it.
+You can get the `ALCHEMY_API_KEY` by creating an account on [Alchemy](https://www.alchemy.com/), and [creating an alchemy app](https://cro-docs.alchemy.com/guides/getting-started#id-1.create-an-alchemy-app). The `DEPLOYER_PRIVATE_KEY` is the private key of the account that will deploy the contracts on testnet, you can follow the instructions on the [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key) to get it. The `PINATA_JWT` and `PINATA_GATEWAY` are required to upload the images to IPFS, you can get them by creating an account on [Pinata](https://pinata.cloud/), [creating an API key](https://pinata.cloud/keys) and [getting the gateway](https://app.pinata.cloud/gateway).
