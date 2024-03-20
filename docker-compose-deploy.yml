@@ -38,13 +38,13 @@ services:
         ports:
             - '3333:3333'
 
-    backend-deploy:
+    offchain-deploy:
         build:
             context: .
             dockerfile: Dockerfile.Python
         command: python3 main.py
         volumes:
-            - ./backend:/workspace
+            - ./offchain:/workspace
             - ./smartcontracts/packages/hardhat/deployments:/deployments
         env_file:
             - .env

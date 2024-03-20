@@ -10,7 +10,7 @@ RUN python3 -m pip install --upgrade pip
 
 WORKDIR /workspace
 
-COPY /backend/requirements.txt /workspace/requirements.txt
+COPY /offchain/requirements.txt /workspace/requirements.txt
 RUN pip install -r requirements.txt
 
 ENV PYTHONUNBUFFERED=1
