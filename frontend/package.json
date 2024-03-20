@@ -3,9 +3,9 @@
 	"private": true,
 	"version": "0.1.0",
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev -p 3333",
 		"build": "next build && next-css-obfuscator",
-		"start": "next start",
+		"start": "next start -p 3333",
 		"lint": "next lint",
 		"obfuscate-build": "next-css-obfuscator"
 	},

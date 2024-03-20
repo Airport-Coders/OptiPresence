@@ -8,6 +8,14 @@ services:
         volumes:
             - ./smartcontracts:/workspace
 
+    frontend-build:
+        build:
+            context: .
+            dockerfile: Dockerfile.Node
+        command: yarn
+        volumes:
+            - ./frontend:/workspace
+
     backend-build:
         build:
             context: .

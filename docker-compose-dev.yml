@@ -5,6 +5,11 @@ services:
             file: docker-compose-common.yml
             service: scaffold-build
 
+    frontend-build:
+        extends:
+            file: docker-compose-common.yml
+            service: frontend-build
+
     backend-build:
         extends:
             file: docker-compose-common.yml
@@ -51,6 +56,19 @@ services:
             - ./smartcontracts:/workspace
         ports:
             - '3000:3000'
+
+    frontend-serve:
+        build:
+            context: .
+            dockerfile: Dockerfile.Node
+        command: yarn dev
+        volumes:
+            - ./frontend:/workspace
+        ports:
+            - '3333:3333'
+        depends_on:
+            frontend-build:
+                condition: service_completed_successfully
 
     backend-api:
         build:
