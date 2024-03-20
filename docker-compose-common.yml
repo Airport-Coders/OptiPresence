@@ -4,7 +4,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.Node
-        command: sh -c "rm -rf ./packages/hardhat/deployments && rm -rf ./packages/nextjs/contracts && yarn install"
+        command: sh -c "rm -rf ./packages/hardhat/deployments && yarn install"
         volumes:
             - ./smartcontracts:/workspace
 

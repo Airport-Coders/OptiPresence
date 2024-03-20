@@ -40,18 +40,18 @@ services:
             scaffold-chain:
                 condition: service_healthy
 
-    #scaffold-next:
-    #    build:
-    #        context: .
-    #        dockerfile: Dockerfile.Node
-    #    command: yarn start
-    #    depends_on:
-    #        scaffold-chain:
-    #            condition: service_healthy
-    #    volumes:
-    #        - ./smartcontracts:/workspace
-    #    ports:
-    #        - '3000:3000'
+    scaffold-next:
+        build:
+            context: .
+            dockerfile: Dockerfile.Node
+        command: yarn start
+        depends_on:
+            scaffold-chain:
+                condition: service_healthy
+        volumes:
+            - ./smartcontracts:/workspace
+        ports:
+            - '3000:3000'
 
     #frontend-serve:
     #    build:
@@ -66,14 +66,14 @@ services:
     #        frontend-build:
     #            condition: service_completed_successfully
 
-    offchain-api:
-        build:
-            context: .
-            dockerfile: Dockerfile.Python
-        command: python3 main.py
-        volumes:
-            - ./offchain:/workspace
-            - ./smartcontracts/packages/hardhat/deployments:/deployments
-        depends_on:
-            scaffold-deploy:
-                condition: service_completed_successfully
+    #offchain-api:
+    #    build:
+    #        context: .
+    #        dockerfile: Dockerfile.Python
+    #    command: python3 main.py
+    #    volumes:
+    #        - ./offchain:/workspace
+    #        - ./smartcontracts/packages/hardhat/deployments:/deployments
+    #    depends_on:
+    #        scaffold-deploy:
+    #            condition: service_completed_successfully
