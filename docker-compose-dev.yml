@@ -10,48 +10,28 @@ services:
     #        file: docker-compose-common.yml
     #        service: frontend-build
 
-    scaffold-chain:
-        build:
-            context: .
-            dockerfile: Dockerfile.Node
-        command: yarn chain
-        volumes:
-            - ./smartcontracts:/workspace
-        ports:
-            - '8545:8545'
-        depends_on:
-            scaffold-build:
-                condition: service_completed_successfully
-        healthcheck:
-            test: ['CMD', 'curl', '-f', 'http://localhost:8545']
-            interval: 5s
-            timeout: 5s
-            retries: 5
-
     scaffold-deploy:
         build:
             context: .
             dockerfile: Dockerfile.Node
-        command: yarn deploy --network scaffold-chain
+        command: yarn deploy --network optimismSepolia
         volumes:
             - ./smartcontracts:/workspace
-
-        depends_on:
-            scaffold-chain:
-                condition: service_healthy
+        env_file:
+            - .env
 
     scaffold-next:
         build:
             context: .
             dockerfile: Dockerfile.Node
         command: yarn start
-        depends_on:
-            scaffold-chain:
-                condition: service_healthy
         volumes:
             - ./smartcontracts:/workspace
         ports:
             - '3000:3000'
+        depends_on:
+            scaffold-deploy:
+                condition: service_completed_successfully
 
     #frontend-serve:
     #    build:
