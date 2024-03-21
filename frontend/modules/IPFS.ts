@@ -15,3 +15,7 @@ export const uploadFile = async (fileToUpload: any) => {
     toast.error('Error uploading file 😢 Try again later')
   }
 }
+
+export const getFileUrl = (cid: string) => {
+  return `https://${process.env.NEXT_PUBLIC_PINATA_GATEWAY}/ipfs/${cid}`
+}

@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { uploadFile } from './../components/UploadFile'
+import { uploadFile, getFileUrl } from '../modules/IPFS'
 
 export default function Home() {
   const [file, setFile] = useState('')
@@ -32,7 +32,7 @@ export default function Home() {
         <Image
           width={500}
           height={500}
-          src={`http://${process.env.NEXT_PUBLIC_PINATA_GATEWAY}/ipfs/${cid}`}
+          src={`${getFileUrl(cid)}`}
           alt="Image from IPFS"
         />
       )}
