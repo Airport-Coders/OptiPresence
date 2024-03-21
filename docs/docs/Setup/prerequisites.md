@@ -13,6 +13,7 @@ Before you start, you need to have the following prerequisites:
 -   [Git](https://git-scm.com/) - Git is a distributed version control system.
 -   [Docker / Docker compose](https://docs.docker.com/get-docker/) - Docker is a platform for building, running, and shipping applications. Docker Compose is a tool for defining and running multi-container Docker applications.
 -   A wallet or a wallet provider to interact with the blockchain. You can use, for example: [Metamask](https://metamask.io/).
+-   A account on [Alchemy](https://www.alchemy.com/) and [Pinata](https://pinata.cloud/) to get the required API keys.
 
 ## Project
 
