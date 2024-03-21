@@ -1,10 +1,11 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { CheckInManager, EventManager } from "../typechain-types";
+import { CheckInManager, EventManager, UserRegistry } from "../typechain-types";
 
 describe("CheckInManager", function () {
   let checkInManager: CheckInManager;
   let eventManager: EventManager;
+  let userRegistry: UserRegistry;
   let addr1: any, addr2: any, offchainValidator: any;
 
   const testEvent = {
@@ -20,8 +21,12 @@ describe("CheckInManager", function () {
     [addr1, addr2, offchainValidator] = await ethers.getSigners();
 
     const eventManagerFactory = await ethers.getContractFactory("EventManager");
+    const userRegistryFactory = await ethers.getContractFactory("UserRegistry");
     eventManager = (await eventManagerFactory.deploy()) as EventManager;
+    userRegistry = (await userRegistryFactory.deploy()) as UserRegistry;
+
     await eventManager.waitForDeployment();
+    await userRegistry.waitForDeployment();
 
     await eventManager
       .connect(addr1)
@@ -35,19 +40,25 @@ describe("CheckInManager", function () {
       );
 
     const checkInManagerFactory = await ethers.getContractFactory("CheckInManager");
-    checkInManager = (await checkInManagerFactory.deploy(eventManager.target)) as CheckInManager;
+    checkInManager = (await checkInManagerFactory.deploy(eventManager.target, userRegistry.target)) as CheckInManager;
 
     await checkInManager.waitForDeployment();
     await checkInManager.setOffchainValidator(offchainValidator.address);
+
+    await userRegistry.connect(addr1).registerUser("Test User", "QmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit");
   });
 
   describe("Check-in Request Submission", function () {
     it("Should allow a user to request a check-in", async function () {
-      const faceHash = "QmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit";
-      const location = "51.5074,0.1278";
-      await expect(checkInManager.connect(addr1).requestCheckIn(0, faceHash, location))
+      const unknownFaceHash = "QmWK3pEw4JyFk9A3H3qzyUbGrp41qiJHtiPUnxoFQicSit";
+      const userLocation = "51.5074,0.1278";
+
+      const knownFaceHash = (await userRegistry.getUserInfo(addr1.address)).faceHash;
+      const event = (await eventManager.getAllEvents())[0];
+
+      await expect(checkInManager.connect(addr1).requestCheckIn(0, unknownFaceHash, userLocation))
         .to.emit(checkInManager, "CheckInRequested")
-        .withArgs(0, addr1.address, 0, faceHash, location);
+        .withArgs(0, addr1.address, 0, knownFaceHash, unknownFaceHash, userLocation, event.location);
     });
   });
 

@@ -7,7 +7,7 @@ class BlockchainClient:
     def __init__(self, http_provider, contract_path):
         self.w3 = Web3(Web3.HTTPProvider(http_provider))
         self.w3.middleware_onion.inject(geth_poa_middleware, layer=0)
-        self.contract = self.load_contract(contract_path)
+        self.contract = None
 
     def load_contract(self, contract_path):
         with open(contract_path) as json_file:
@@ -16,4 +16,7 @@ class BlockchainClient:
             contract_abi = contract_json['abi']
 
             print(f"Loading contract at address: {contract_address}")
-            return self.w3.eth.contract(address=contract_address, abi=contract_abi)
+            self.contract = self.w3.eth.contract(address=contract_address, abi=contract_abi)
+
+    def reply_to_checkin_request(self, event_id, user_address, checkin_id, result):
+        self.contract.functions.replyCheckIn(event_id, user_address, checkin_id, result)

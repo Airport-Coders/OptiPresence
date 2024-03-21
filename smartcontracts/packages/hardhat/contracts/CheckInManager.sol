@@ -2,6 +2,7 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 import "./EventManager.sol";
+import "./UserRegistry.sol";
 
 /*
  * @title CheckInManager
@@ -27,6 +28,7 @@ contract CheckInManager {
 	mapping(uint256 => address[]) private checkInEventUser; // Users who have checked in for an event
 
 	EventManager private eventManager; // EventManager contract reference
+	UserRegistry private userRegistry; // UserRegistry contract reference
 
 	address public offchainValidator; // Address of the off-chain validator
 
@@ -34,8 +36,10 @@ contract CheckInManager {
 		uint256 indexed eventId,
 		address indexed user,
 		uint8 indexed checkInId,
-		string faceHash,
-		string location
+		string knownFaceHash,
+		string unknownFaceHash,
+		string userLocation,
+		string eventLocation
 	); // Event for check-in requests
 	event CheckInConfirmed(
 		uint256 indexed eventId,
@@ -105,13 +109,15 @@ contract CheckInManager {
 	 * @param _eventManagerDeployed Address of the deployed EventManager contract.
 	 * @param _offchainValidator Address of the off-chain validator.
 	 */
-	constructor(address _eventManagerDeployed) {
+	constructor(address _eventManagerDeployed, address _userRegistryDeployed) {
 		require(
 			_eventManagerDeployed != address(0),
 			"Invalid EventManager address"
 		);
 
 		eventManager = EventManager(_eventManagerDeployed);
+		userRegistry = UserRegistry(_userRegistryDeployed);
+
 		offchainValidator = msg.sender;
 	}
 
@@ -133,8 +139,8 @@ contract CheckInManager {
 	 */
 	function requestCheckIn(
 		uint256 _eventId,
-		string calldata faceHash,
-		string calldata location
+		string calldata unknownFaceHash,
+		string calldata userLocation
 	)
 		external
 		eventExists(_eventId)
@@ -146,19 +152,27 @@ contract CheckInManager {
 			CheckIn({
 				id: checkInId,
 				user: msg.sender,
-				faceHash: faceHash,
-				location: location,
+				faceHash: unknownFaceHash,
+				location: userLocation,
 				timestamp: block.timestamp,
 				status: CheckInStatus.Pending
 			})
 		);
 
+		string memory knownFaceHash = userRegistry
+			.getUserInfo(msg.sender)
+			.faceHash;
+
+		string memory eventLocation = eventManager.getEvent(_eventId).location;
+
 		emit CheckInRequested(
 			_eventId,
 			msg.sender,
 			checkInId,
-			faceHash,
-			location
+			unknownFaceHash,
+			knownFaceHash,
+			userLocation,
+			eventLocation
 		);
 	}
 

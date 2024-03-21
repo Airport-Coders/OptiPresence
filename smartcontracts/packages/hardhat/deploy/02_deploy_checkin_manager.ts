@@ -7,10 +7,11 @@ const deployCheckInManager: DeployFunction = async function (hre: HardhatRuntime
   const { deploy } = hre.deployments;
 
   const eventManager = await hre.ethers.getContract<Contract>("EventManager", deployer);
+  const UserRegistry = await hre.ethers.getContract<Contract>("UserRegistry", deployer);
 
   await deploy("CheckInManager", {
     from: deployer,
-    args: [eventManager.target],
+    args: [eventManager.target, UserRegistry.target],
     log: true,
     autoMine: true,
   });

@@ -4,6 +4,9 @@ import os
 
 from modules.image_processor import ImageProcessor
 from modules.face_comparator import FaceComparator
+from modules.ipfs_client import IPFSClient
+
+ipfs_client = IPFSClient()
 
 
 class FaceComparatorService:
@@ -11,21 +14,20 @@ class FaceComparatorService:
         self.cache_dir = cache_dir
         os.makedirs(self.cache_dir, exist_ok=True)
 
-    def _save_file(self, file, filename):
-        with open(filename, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+    def _save_file(self, file_hash, filename):
+        return ipfs_client.download_file(file_hash, filename)
 
     def _cleanup_files(self, filenames):
         for filename in filenames:
             os.remove(filename)
 
-    def compare_faces(self, known_file, unknown_file):
+    def compare_faces(self, known_file_hash, unknown_file_hash):
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        known_filename = f"{self.cache_dir}/known_{timestamp}.{known_file.name.split('.')[-1]}"
-        unknown_filename = f"{self.cache_dir}/unknown_{timestamp}.{unknown_file.name.split('.')[-1]}"
+        known_filename = f"{self.cache_dir}/known_{timestamp}"
+        unknown_filename = f"{self.cache_dir}/unknown_{timestamp}"
 
-        self._save_file(known_file, known_filename)
-        self._save_file(unknown_file, unknown_filename)
+        known_filename = self._save_file(known_file_hash, known_filename)
+        unknown_filename = self._save_file(unknown_file_hash, unknown_filename)
 
         known_image = ImageProcessor.load_image(known_filename)
         unknown_image = ImageProcessor.load_image(unknown_filename)
