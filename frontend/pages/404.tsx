@@ -1,9 +1,9 @@
-import { Button } from './../components/Button'
-import { CirclesBackground } from './../components/CirclesBackground'
-import { Container } from './../components/Container'
-import { Layout } from './../components/Layout'
+import { Button } from '../components/Button'
+import { CirclesBackground } from '../components/CirclesBackground'
+import { Container } from '../components/Container'
+import { Layout } from '../components/Layout'
 
-export default function NotFound() {
+export default function Custom404() {
   return (
     <Layout>
       <Container className="relative isolate flex h-full flex-col items-center justify-center py-20 text-center sm:py-32">
