@@ -49,7 +49,7 @@ const config = {
 			// Replace with your project's social card
 			image: 'img/docusaurus-social-card.jpg',
 			navbar: {
-				title: 'Home',
+				title: 'Introduction',
 
 				logo: {
 					alt: 'Home Logo',
@@ -57,29 +57,30 @@ const config = {
 				},
 				items: [
 					{
+						to: 'structure',
+						label: 'Structure',
+						position: 'left',
+					},
+					{
 						to: 'category/setup',
 						label: 'Setup',
 						position: 'left',
+					},
+					{
+						to: 'mvp-deploy',
+						label: 'MVP Deploy',
+						position: 'left',
+					},
+					{
+						href: 'https://github.com/Airport-Coders/OptiPresence',
+						label: 'GitHub',
+						position: 'right',
 					},
 				],
 			},
 			footer: {
 				style: 'dark',
-				links: [
-					{
-						title: 'Docs',
-						items: [
-							{
-								to: '/',
-								label: 'Introduction',
-							},
-							{
-								to: 'category/setup',
-								label: 'Setup',
-							},
-						],
-					},
-				],
+				links: [],
 				copyright: `Copyright © ${new Date().getFullYear()} Airport Coders, Inc. Built with Docusaurus.`,
 			},
 			prism: {

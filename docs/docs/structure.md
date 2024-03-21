@@ -33,9 +33,17 @@ title: Structure
 
 ## Docker
 
-<!-- Diagram of the docker structure -->
+### Services
 
-...
+<iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/XBbpRHtAkJwhkaRnwKFDWy"></iframe>
+
+### Environments
+
+<iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/K26ouFXSN1LEx6sZL6mVDM"></iframe>
+
+### Dependencies
+
+<iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/Liunwf1seSmkfHCkLJXJCo"></iframe>
 
 ## CI/CD Actions
 
