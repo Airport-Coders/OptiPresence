@@ -48,7 +48,7 @@ services:
         env_file:
             - .env
 
-    offchain-api:
+    offchain:
         build:
             context: .
             dockerfile: Dockerfile.Python
