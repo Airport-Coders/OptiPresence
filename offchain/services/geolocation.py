@@ -2,7 +2,7 @@ from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
 
-class Geolocation:
+class GeolocationService:
     def __init__(self):
         self.geolocator = Nominatim(user_agent="geolocation")
 
@@ -13,5 +13,5 @@ class Geolocation:
 
 
 if __name__ == "__main__":
-    geolocation = Geolocation()
-    print(geolocation.distance("41.49008,-71.312796", "41.499498,-81.695391"))
+    geolocation = GeolocationService()
+    print(geolocation.distance("41.49008,-71.312796", "41.49053,-71.312796"))

@@ -43,4 +43,4 @@ class FaceComparatorService:
 
         self._cleanup_files([known_filename, unknown_filename])
 
-        return {"match": results[0]}
+        return results[0]

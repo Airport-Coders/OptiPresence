@@ -7,13 +7,15 @@ from modules.blockchain_client import BlockchainClient
 from modules.event_processor import log_loop
 
 from services.facial_biometric import FaceComparatorService
-from services.geolocation import Geolocation
+from services.geolocation import GeolocationService
 
 contract_path = OptimismSepoliaContractPath
 http_provider = HttpProviderAlchemy
 
 face_comparator_service = FaceComparatorService()
-blockchain_client = BlockchainClient(http_provider)
+geolocation_service = GeolocationService()
+
+blockchain_client = BlockchainClient(http_provider, DEPLOYER_PRIVATE_KEY)
 blockchain_client.load_contract(contract_path)
 
 
@@ -31,6 +33,7 @@ async def handle_event(event):
     );
     '''
     def reply(result):
+        print(f"Replying to CheckInRequested event with result: {result}")
         blockchain_client.reply_to_checkin_request(
             checkin_request['eventId'],
             checkin_request['user'],
@@ -44,6 +47,15 @@ async def handle_event(event):
 
     if not face_match:
         reply(False)
+        return
+
+    distance_meters = geolocation_service.distance(checkin_request['userLocation'], checkin_request['eventLocation'])
+
+    print(f"Distance: {distance_meters} meters")
+
+    if distance_meters > 150:
+        reply(False)
+        return
 
     reply(True)
 
