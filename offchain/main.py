@@ -10,14 +10,15 @@ async def handle_event(event):
 
 
 async def main():
-    contract_path = ScaffoldChainContractPath if not ALCHEMY_API_KEY else OptimismSepoliaContractPath
-    http_provider = HttpProviderScaffold if not ALCHEMY_API_KEY else HttpProviderAlchemy
+    contract_path = OptimismSepoliaContractPath
+    http_provider = HttpProviderAlchemy
 
     await wait_for_file(contract_path)
 
     blockchain_client = BlockchainClient(http_provider, contract_path)
-    event_filter = blockchain_client.contract.events.CheckinRequest.create_filter(fromBlock='latest')
+    event_filter = blockchain_client.contract.events.CheckInRequested.create_filter(fromBlock='latest')
 
+    print("Waiting for events...")
     await log_loop(event_filter, handle_event)
 
 if __name__ == "__main__":
