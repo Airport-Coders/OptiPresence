@@ -5,7 +5,7 @@ import { Address as AddressType, createWalletClient, http, parseEther } from "vi
 import { hardhat } from "viem/chains";
 import { useNetwork } from "wagmi";
 import { BanknotesIcon } from "@heroicons/react/24/outline";
-import { Address, AddressInput, Balance, EtherInput } from "~~/components/scaffold-eth";
+import { Address, AddressInput, Balance, EtherInput } from "~~./../components/scaffold-eth";
 import { useTransactor } from "~~/hooks/scaffold-eth";
 import { getParsedError, notification } from "~~/utils/scaffold-eth";
 
