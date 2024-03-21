@@ -97,7 +97,7 @@ function Chart({
           <stop offset="100%" stopColor="#13B5C8" stopOpacity="0" />
         </linearGradient>
       </defs>
-      {[...Array(gridLines - 1).keys()].map((index) => (
+      {Array.from(Array(gridLines - 1).keys()).map((index) => (
         <line
           key={index}
           stroke="#a3a3a3"

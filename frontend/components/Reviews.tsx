@@ -111,7 +111,7 @@ function StarIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function StarRating({ rating }: { rating: Review['rating'] }) {
   return (
     <div className="flex">
-      {[...Array(5).keys()].map((index) => (
+      {[...Array(5)].map((_, index) => (
         <StarIcon
           key={index}
           className={clsx(
