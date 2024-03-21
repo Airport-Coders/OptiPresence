@@ -3,11 +3,13 @@ sidebar_position: 0
 title: Structure
 ---
 
-## Overview
+Here you can find the structure of the project, with the smart contracts, frontend, offchain, docker services and CI/CD workflow.
 
-<!-- Diagram of the project -->
+## High Level Overview of user interaction
 
-...
+A user interaction diagram that shows the flow of the user interaction with the system. The user can register, create an event, check-in to an event, and validate the check-in.
+
+<iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/Hy7zLRFrPoBZBa9R27vPeY"></iframe>
 
 ## Folders
 
@@ -17,8 +19,6 @@ title: Structure
 -   [docs](https://github.com/Airport-Coders/OptiPresence/tree/main/docs): Documentation of the project with [docusaurus](https://docusaurus.io/). _You are here 🤓_.
 -   [.github](https://github.com/Airport-Coders/OptiPresence/tree/main/.github): Github actions for the project, with the tests and autodeploy of the frontend and offchain services.
 -   `Dockerfile.* and docker-compose-*.yml`: Docker containers for the services of the project, with the [docker-compose](https://docs.docker.com/compose/) for the development, production and test environments.
-
-<!-- Explain the project folders struct-->
 
 ## Contracts
 
