@@ -11,7 +11,7 @@ import {
   InputBase,
   IntegerInput,
   IntegerVariant,
-} from "~~/components/scaffold-eth";
+} from "~~./../components/scaffold-eth";
 import { AbiParameterTuple } from "~~/utils/scaffold-eth/contract";
 
 type ContractInputProps = {

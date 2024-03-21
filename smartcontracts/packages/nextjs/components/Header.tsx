@@ -11,7 +11,7 @@ import {
   FaucetButton,
   RainbowKitCustomConnectButton,
   SuperchainFaucetButton,
-} from "~~/components/scaffold-eth";
+} from "~~./../components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
 type HeaderMenuLink = {
