@@ -249,7 +249,8 @@ export function Reviews() {
           Everyone is changing their events with OptiPresence.
         </h2>
         <p className="mt-2 text-lg text-gray-600 sm:text-center">
-        What people are saying about OptiPresence and how it's changing their lives.
+          What people are saying about OptiPresence and how its changing their
+          lives.
         </p>
         <ReviewGrid />
       </Container>

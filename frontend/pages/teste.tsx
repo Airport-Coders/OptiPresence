@@ -1,9 +1,7 @@
-'use client'
-
 import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { uploadFile, getFileUrl } from '../modules/IPFS'
-
+import { getContracts } from '../modules/Contracts'
 export default function Home() {
   const [file, setFile] = useState('')
   const [cid, setCid] = useState('')
@@ -18,6 +16,11 @@ export default function Home() {
     setCid(cid)
     setUploading(false)
   }
+
+  ;(async () => {
+    const { UserRegistry, CheckInManager, EventManager } = await getContracts()
+    console.log(UserRegistry.address)
+  })()
 
   return (
     <main className="m-auto flex min-h-screen w-full flex-col items-center justify-center">
