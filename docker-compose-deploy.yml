@@ -46,7 +46,6 @@ services:
             dockerfile: Dockerfile.Python
         command: python3 main.py
         volumes:
-            - ./offchain:/workspace
             - ./smartcontracts/packages/hardhat/deployments:/deployments
         env_file:
             - .env

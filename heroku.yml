@@ -1,0 +1,6 @@
+build:
+  docker:
+    offchain: Dockerfile.Python
+
+run:
+  offchain: python3 main.py
