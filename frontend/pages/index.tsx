@@ -4,7 +4,7 @@ import { Hero } from '../components/Hero'
 import { PrimaryFeatures } from '../components/PrimaryFeatures'
 import { SecondaryFeatures } from '../components/SecondaryFeatures'
 import { CallToAction } from '../components/CallToAction'
-import { Reviews } from '../components/Reviews'
+import { UseCases } from '../components/UseCases'
 import { Faqs } from '../components/Faqs'
 
 const Home: NextPage = () => {
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       <PrimaryFeatures />
       <SecondaryFeatures />
       <CallToAction />
-      <Reviews />
+      <UseCases />
       <Faqs />
     </Layout>
   )

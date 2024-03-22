@@ -3,53 +3,55 @@ import { Container } from './../components/Container'
 const faqs = [
   [
     {
-      question: 'How do I know the tips are good?',
+      question: 'How does OptiPresence ensure attendance authenticity?',
       answer:
-        'Our whole business depends on our tips being good, so it’s in our best interest that they are. The results of our customers speak for themselves, just trust us.',
+        'OptiPresence employs secure biometric authentication and real-time location validation. This ensures that only the registered individual can check in at the correct location, effectively eliminating buddy punching and unauthorized access.',
     },
     {
-      question: 'Isn’t this insider trading?',
+      question:
+        'How does blockchain technology enhance the security of OptiPresence?',
       answer:
-        'Yes exactly. But at scale! Historically you could only make insider trades with knowledge from your direct network. Pocket brings you insider trading tips from people you don’t even know.',
+        'By utilizing the Optimism blockchain network, OptiPresence provides an immutable, transparent, and secure ledger for check-in data. This prevents tampering and ensures the integrity and accuracy of attendance records.',
     },
     {
-      question: 'But isn’t insider trading illegal?',
+      question: 'Can OptiPresence integrate with existing systems?',
       answer:
-        'Here’s the thing: you’re the one doing the insider trading, not us. We’re just giving you the tips and some tools to make trades. We’re not doing anything wrong here.',
-    },
-  ],
-  [
-    {
-      question: 'Do the people giving you tips realize what they are doing?',
-      answer:
-        'Again I would argue this isn’t really our responsibility. People make their own choices. If they don’t research the consequences that’s on them, not on us.',
-    },
-    {
-      question: 'Where is Pocket based?',
-      answer:
-        'Let’s just say it’s not somewhere where the SEC is going to find us.',
-    },
-    {
-      question: 'Is there any age limit to trading on Pocket?',
-      answer:
-        'For our free plan, the age limit is based on the minimum age to trade in your country of residence. Our VIP plan uses advanced transaction anonymization though, so you can use that plan even if you’re 9 years old. Or a dog.',
+        'Yes, OptiPresence is designed to be integration-friendly. It can seamlessly connect with HR (payroll) systems, student information systems, and more, facilitating real-time updates and reducing administrative overhead.',
     },
   ],
   [
     {
-      question: 'How did you get this on the App Store?',
+      question:
+        'Is OptiPresence customizable for different organizational needs?',
       answer:
-        'Honestly we were surprised too, but eventually we found out that the app reviewer found the app so compelling they approved it just so they could use it themselves.',
+        'Absolutely. OptiPresence allows institutions to set specific check-in parameters, adapting to various contractual or educational requirements, and supporting diverse working arrangements and academic schedules.',
     },
     {
-      question: 'How do I explain the money I withdraw from Pocket to the IRS?',
+      question: 'How can OptiPresence simplify the auditing process?',
       answer:
-        'This feels like one-hundred percent a you problem. Pocket is not responsible in any way for your tax returns.',
+        'OptiPresence generates comprehensive and irrefutable reports suitable for both internal and external audits. This enhances regulatory compliance and simplifies the auditing process by leveraging the immutable nature of blockchain records.',
     },
     {
-      question: 'How do I become an insider?',
+      question: 'What additional verification needs can OptiPresence fulfill?',
       answer:
-        'Contact us with some details about your industry and the type of access you have to apply for an insider account. Once approved, we’ll send you a guide on collecting insider information without being detected at work.',
+        'Beyond just check-ins, OptiPresence can be adapted for verifying academic achievements, professional credentials, event participation, and health records, offering a versatile platform for various verification requirements.',
+    },
+  ],
+  [
+    {
+      question: 'Who can benefit from using OptiPresence?',
+      answer:
+        'OptiPresence is suitable for academic institutions, corporate environments, healthcare facilities, events and conferences, and government and public services. It streamlines attendance tracking and enhances accountability and transparency.',
+    },
+    {
+      question: 'How does OptiPresence protect privacy and data security?',
+      answer:
+        'Using permissioned blockchain technology, OptiPresence ensures that sensitive data is securely stored and shared only with authorized parties. It adheres to strict data protection regulations and offers robust security features.',
+    },
+    {
+      question: 'OptiPresence is simple to use?',
+      answer:
+        'Yes, OptiPresence is designed to be user-friendly and intuitive. It requires minimal training and can be easily adopted by employees, students, and other users. The platform is accessible via web and mobile applications.',
     },
   ],
 ]
