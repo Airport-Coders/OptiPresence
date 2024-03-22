@@ -57,8 +57,8 @@ const config = {
 				},
 				items: [
 					{
-						to: 'structure',
-						label: 'Structure',
+						to: 'structures',
+						label: 'Structures',
 						position: 'left',
 					},
 					{

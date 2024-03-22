@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: Structure
+title: Structures
 ---
 
 Here you can find the structure of the project, with the smart contracts, frontend, offchain, docker services and CI/CD workflow.
@@ -71,6 +71,6 @@ In this diagram you can follow the dependencies of the services and dockerfiles 
 
 ## CI/CD Actions
 
-<!-- About github actions tests and autodeploy of dapp -->
+Here you can see the CI/CD actions that are running on the project, with the tests, build and deploy of the frontend and offchain services.
 
-...
+<iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/KtKtXfeTCC5NTR4LTFEUAz"></iframe>
