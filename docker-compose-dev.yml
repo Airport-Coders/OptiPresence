@@ -40,10 +40,13 @@ services:
         command: yarn dev
         volumes:
             - ./frontend:/workspace
+            - ./smartcontracts/packages/hardhat/deployments:/deployments
         ports:
             - '3333:3333'
         depends_on:
             frontend-build:
+                condition: service_completed_successfully
+            scaffold-deploy:
                 condition: service_completed_successfully
         env_file:
             - .env

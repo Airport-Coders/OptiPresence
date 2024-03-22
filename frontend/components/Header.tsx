@@ -116,7 +116,7 @@ export function Header() {
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                          <ConnectButton /> 
+                            <ConnectButton />
                           </div>
                         </Popover.Panel>
                       </>
@@ -125,8 +125,8 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <ConnectButton />  
-            <Button href="#" className="hidden lg:block">
+            <ConnectButton />
+            <Button href="/login" className="hidden lg:block">
               Sign In
             </Button>
           </div>

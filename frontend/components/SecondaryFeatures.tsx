@@ -4,19 +4,18 @@ import { Container } from './../components/Container'
 
 const features = [
   {
-    name: 'Invest any amount',
+    name: 'Conect to your wallet',
     description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
-    icon: DeviceArrowIcon,
+      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
+    icon: DeviceLockIcon,
   },
   {
-    name: 'Build a balanced portfolio',
-    description:
-      'Invest in different industries to find the most opportunities to win huge.',
+    name: 'Create an event',
+    description: '',
     icon: DeviceCardsIcon,
   },
   {
-    name: 'Trade in real-time',
+    name: 'Do your check-in at the event',
     description:
       'Get insider tips on big stock moves and act on them within seconds.',
     icon: DeviceClockIcon,
@@ -26,18 +25,6 @@ const features = [
     description:
       'Invite new insiders to get tips faster and beat even other Pocket users.',
     icon: DeviceListIcon,
-  },
-  {
-    name: 'Encrypted and anonymized',
-    description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
-    icon: DeviceLockIcon,
-  },
-  {
-    name: 'Portfolio tracking',
-    description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
-    icon: DeviceChartIcon,
   },
 ]
 

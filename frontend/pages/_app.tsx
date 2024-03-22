@@ -12,7 +12,7 @@ import { Toaster } from 'react-hot-toast';
 const config = getDefaultConfig({
 	appName: 'Airport Coders',
 	projectId: 'YOUR_PROJECT_ID',
-	chains: [optimismSepolia, hardhat],
+	chains: [optimismSepolia],
 	ssr: true,
 });
 

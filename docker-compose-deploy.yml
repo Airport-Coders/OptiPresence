@@ -30,11 +30,13 @@ services:
         command: sh -c "yarn build && yarn start"
         volumes:
             - ./frontend:/workspace
+            - ./smartcontracts/packages/hardhat/deployments:/deployments
         env_file:
             - .env
         depends_on:
             scaffold-deploy:
                 condition: service_completed_successfully
+
         ports:
             - '3333:3333'
 
