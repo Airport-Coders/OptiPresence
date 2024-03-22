@@ -19,6 +19,7 @@ A user interaction diagram that shows the flow of the user interaction with the 
 -   [docs](https://github.com/Airport-Coders/OptiPresence/tree/main/docs): Documentation of the project with [docusaurus](https://docusaurus.io/). _You are here 🤓_.
 -   [.github](https://github.com/Airport-Coders/OptiPresence/tree/main/.github): Github actions for the project, with the tests and autodeploy of the frontend and offchain services.
 -   `Dockerfile.* and docker-compose-*.yml`: Docker containers for the services of the project, with the [docker-compose](https://docs.docker.com/compose/) for the development, production and test environments.
+-   `Procfile`: Heroku file to run the offchain service on the cloud.
 
 ## Contracts
 
