@@ -12,6 +12,7 @@ class BlockchainClient:
         self.contract = None
 
     def load_contract(self, contract_path_or_url):
+        print(f"Loading contract from: {contract_path_or_url}")
         contract_json = None
 
         if contract_path_or_url.startswith('https'):
