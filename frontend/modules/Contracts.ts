@@ -18,12 +18,25 @@ async function importJsonOrEnv<T>(name: string, envVar: string): Promise<T> {
     console.error(
       `Failed to import ${name}.json, checking environment variable...`,
     )
-    const url = process.env[envVar]
+    let url = null
+
+    // Workaround for Vercel environment variables not being available with process.env[envVar]
+    if (envVar === 'NEXT_PUBLIC_CONTRACT_UserRegistry') {
+      url = process.env.NEXT_PUBLIC_CONTRACT_UserRegistry
+    } else if (envVar === 'NEXT_PUBLIC_CONTRACT_CheckInManager') {
+      url = process.env.NEXT_PUBLIC_CONTRACT_CheckInManager
+    } else if (envVar === 'NEXT_PUBLIC_CONTRACT_EventManager') {
+      url = process.env.NEXT_PUBLIC_CONTRACT_EventManager
+    }
+
+    console.log(`Environment variable ${envVar} found: ${url}`)
     if (!url) {
+      console.log(`Environment variable ${envVar} not found.`)
       throw new Error(`Environment variable ${envVar} not found.`)
     }
     const response = await fetch(url)
     if (!response.ok) {
+      console.log(`Failed to fetch ${url}: ${response.statusText}`)
       throw new Error(`Failed to fetch ${url}: ${response.statusText}`)
     }
     const jsonData = await response.json()
