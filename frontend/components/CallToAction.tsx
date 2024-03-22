@@ -16,7 +16,7 @@ export function CallToAction() {
             Get your check-in today!
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            It takes 30 seconds to sign up. Create an account, and create a .
+            It takes 30 seconds to sign up. Create your account and begin crafting and sharing your event.
           </p>
         </div>
       </Container>

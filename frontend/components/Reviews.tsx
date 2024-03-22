@@ -246,10 +246,10 @@ export function Reviews() {
           id="reviews-title"
           className="text-3xl font-medium tracking-tight text-gray-900 sm:text-center"
         >
-          Everyone is changing their life with Pocket.
+          Everyone is changing their events with OptiPresence.
         </h2>
         <p className="mt-2 text-lg text-gray-600 sm:text-center">
-          Thousands of people have doubled their net-worth in the last 30 days.
+        What people are saying about OptiPresence and how it's changing their lives.
         </p>
         <ReviewGrid />
       </Container>

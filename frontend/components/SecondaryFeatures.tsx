@@ -4,29 +4,22 @@ import { Container } from './../components/Container'
 
 const features = [
   {
-    name: 'Conect to your wallet',
-    description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
-    icon: DeviceLockIcon,
+    "name": "Connect to your wallet",
+    "description": "Seamlessly connect your digital wallet with unparalleled security measures, ensuring your transactions are safe and your identity remains anonymous.",
+    "icon": DeviceLockIcon
   },
   {
-    name: 'Create an event',
-    description: '',
-    icon: DeviceCardsIcon,
+    "name": "Do your check-in at the event",
+    "description": "Effortlessly check into your events using our intuitive system. Just a tap and you're in, giving you more time to enjoy what really matters.",
+    "icon": DeviceClockIcon
   },
   {
-    name: 'Do your check-in at the event',
-    description:
-      'Get insider tips on big stock moves and act on them within seconds.',
-    icon: DeviceClockIcon,
-  },
-  {
-    name: 'Profit from your network',
-    description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
-    icon: DeviceListIcon,
-  },
+    name: "Join or create an event",
+    description: "Easily create or join events within our platform. Whether you're hosting or attending, our tools make the process straightforward and enjoyable.",
+    icon: DeviceListIcon
+  }
 ]
+
 
 function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
