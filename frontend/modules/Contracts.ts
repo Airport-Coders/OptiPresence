@@ -34,7 +34,7 @@ async function importJsonOrEnv<T>(name: string, envVar: string): Promise<T> {
   }
 }
 
-export async function getContracts() {
+export async function loadContracts() {
   const UserRegistry = await importJsonOrEnv<any>(
     'UserRegistry',
     'NEXT_PUBLIC_CONTRACT_UserRegistry',

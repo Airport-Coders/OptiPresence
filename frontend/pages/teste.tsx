@@ -1,43 +1,20 @@
-import { useState, useRef } from 'react'
-import Image from 'next/image'
-import { uploadFile, getFileUrl } from '../modules/IPFS'
-import { getContracts } from '../modules/Contracts'
+import { UserInfoCard } from '../components/blockchain/UserInfoCard'
+import { useAccount } from 'wagmi'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+
 export default function Home() {
-  const [file, setFile] = useState('')
-  const [cid, setCid] = useState('')
-  const [uploading, setUploading] = useState(false)
-
-  const inputFile = useRef(null)
-
-  const handleChange = async (e: any) => {
-    setFile(e.target.files[0])
-    setUploading(true)
-    const cid = await uploadFile(e.target.files[0])
-    setCid(cid)
-    setUploading(false)
-  }
-
-  ;(async () => {
-    const { UserRegistry, CheckInManager, EventManager } = await getContracts()
-    console.log(UserRegistry.address)
-  })()
+  const { address, isConnected } = useAccount()
 
   return (
     <main className="m-auto flex min-h-screen w-full flex-col items-center justify-center">
-      <input type="file" id="file" ref={inputFile} onChange={handleChange} />
-      <button
-        disabled={uploading}
-        onClick={() => (inputFile.current as any)?.click()}
-      >
-        {uploading ? 'Uploading...' : 'Upload'}
-      </button>
-      {cid && (
-        <Image
-          width={500}
-          height={500}
-          src={`${getFileUrl(cid)}`}
-          alt="Image from IPFS"
-        />
+      <h1 className="text-3xl font-bold">User Info</h1>
+      {address ? (
+        <UserInfoCard address={address} />
+      ) : (
+        <>
+          <div>Connect your wallet</div>
+          <ConnectButton />
+        </>
       )}
     </main>
   )
