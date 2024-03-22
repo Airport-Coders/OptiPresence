@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { Popover } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { Button } from './../components/Button'
+import { useAccount } from 'wagmi'
 import { Container } from './../components/Container'
 import { Logo } from './../components/Logo'
 import { NavLinks } from './../components/NavLinks'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { useReadContract } from 'wagmi'
+import { useContracts } from '../providers/contracts'
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -52,45 +54,89 @@ function MobileNavLink(
 }
 
 export function Header() {
+  const { address } = useAccount()
+  const { data: contractsData } = useContracts()
+  const UserRegistry = contractsData?.UserRegistry
+
+  const { data: userInfoData, isLoading: isReadContractPending } =
+    useReadContract({
+      address: UserRegistry?.address,
+      abi: UserRegistry?.abi,
+      functionName: 'getUserInfo',
+      args: [address as string],
+    })
+
   return (
     <header>
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+              <Logo />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
             </div>
           </div>
           <div className="flex items-center gap-6">
+            {isReadContractPending && address ? (
+              <div className="flex items-center">
+                <Link
+                  className="rounded-lg bg-purple-700 px-6 py-1 text-lg font-bold text-white hover:bg-purple-800"
+                  href="/register"
+                >
+                  Register
+                </Link>
+              </div>
+            ) : (userInfoData as any)?.name ? (
+              <div className="flex flex-col md:flex-row">
+                <span className="text-lg font-semibold text-gray-900 md:text-sm">
+                  Welcome back,{' '}
+                  <span className="text-xl font-bold text-purple-700 md:text-lg">
+                    {(userInfoData as any).name}
+                  </span>
+                </span>
+              </div>
+            ) : (
+              address && (
+                <div className="flex items-center">
+                  <Link
+                    className="rounded-lg bg-purple-700 px-6 py-1 text-lg font-bold text-white hover:bg-purple-800"
+                    href="/register"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )
+            )}
+            <ConnectButton />
             <Popover className="lg:hidden">
               {({ open }) => (
                 <>
                   <Popover.Button
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 ui-not-focus-visible:outline-none"
+                    className={`z-10 -m-2 inline-flex items-center rounded-lg p-2 outline-none ${
+                      open
+                        ? 'stroke-gray-600 hover:bg-gray-200/50'
+                        : 'stroke-gray-900 hover:bg-gray-200/50 active:stroke-gray-900'
+                    }`}
                     aria-label="Toggle site navigation"
                   >
-                    {({ open }) =>
-                      open ? (
-                        <ChevronUpIcon className="h-6 w-6" />
-                      ) : (
-                        <MenuIcon className="h-6 w-6" />
-                      )
-                    }
+                    {open ? (
+                      <ChevronUpIcon className="h-6 w-6" />
+                    ) : (
+                      <MenuIcon className="h-6 w-6" />
+                    )}
                   </Popover.Button>
                   <AnimatePresence initial={false}>
                     {open && (
-                      <>
-                        <Popover.Overlay
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur"
-                        />
+                      <Popover.Overlay
+                        static
+                        as={motion.div}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-gray-300/60 backdrop-blur"
+                      >
                         <Popover.Panel
                           static
                           as={motion.div}
@@ -101,7 +147,8 @@ export function Header() {
                             y: -32,
                             transition: { duration: 0.2 },
                           }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
+                          className="shadow-2 xl absolute inset-x-0 top-0 z-40 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6
+						  pt-32 shadow-gray-900/20"
                         >
                           <div className="space-y-4">
                             <MobileNavLink href="/#features">
@@ -110,25 +157,15 @@ export function Header() {
                             <MobileNavLink href="/#reviews">
                               Reviews
                             </MobileNavLink>
-                            <MobileNavLink href="/#pricing">
-                              Pricing
-                            </MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
-                          <div className="mt-8 flex flex-col gap-4">
-                            <ConnectButton />
-                          </div>
                         </Popover.Panel>
-                      </>
+                      </Popover.Overlay>
                     )}
                   </AnimatePresence>
                 </>
               )}
             </Popover>
-            <ConnectButton />
-            <Button href="/login" className="hidden lg:block">
-              Sign In
-            </Button>
           </div>
         </Container>
       </nav>

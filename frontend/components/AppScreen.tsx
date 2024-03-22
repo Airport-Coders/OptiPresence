@@ -53,7 +53,7 @@ export function AppScreen({
     <div className={clsx('flex flex-col', className)} {...props}>
       <div className="flex justify-between px-4 pt-4">
         <MenuIcon className="h-6 w-6 flex-none" />
-        <Logo className="h-6 flex-none" />
+        <Logo />
         <UserIcon className="h-6 w-6 flex-none" />
       </div>
       {children}

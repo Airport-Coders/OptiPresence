@@ -1,4 +1,4 @@
-import { UserInfoCard } from '../components/blockchain/UserInfoCard'
+import { UserInfoCard } from '../components/UserInfoCard'
 import { useAccount } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 

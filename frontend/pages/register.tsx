@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { AuthLayout } from './../components/AuthLayout'
-import { Button } from './../components/Button'
+import { AuthLayout } from '../components/AuthLayout'
+import { Button } from '../components/Button'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { type Metadata } from 'next'
 
@@ -23,8 +23,8 @@ export default function Login() {
         </>
       }
     >
-      <div className='flex items-center'>
-      <ConnectButton />
+      <div className="flex items-center">
+        <ConnectButton />
       </div>
     </AuthLayout>
   )

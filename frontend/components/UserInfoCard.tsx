@@ -1,6 +1,6 @@
 import React from 'react'
 import { useReadContract } from 'wagmi'
-import { useContracts } from '../../providers/contracts'
+import { useContracts } from '../providers/contracts'
 import { Address } from 'viem'
 
 export function UserInfoCard({ address }: { address: Address }) {
