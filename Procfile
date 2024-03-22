@@ -1,1 +1,1 @@
-offchain: sh -c 'cd offchain && python3 main.py'
+offchain: python3 offchain/main.py
