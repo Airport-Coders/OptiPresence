@@ -22,8 +22,10 @@ export function Footer() {
           <div className="flex items-center text-gray-900">
             <Logomark />
             <div className="ml-4">
-              <p className="text-base font-semibold">Pocket</p>
-              <p className="mt-1 text-sm">Invest at the perfect time.</p>
+              <p className="text-base font-semibold">OptiPresence</p>
+              <p className="mt-1 text-sm">
+                Decentralized Check-In and Attendance Verification System 🛡️
+              </p>
             </div>
           </div>
           <nav className="mt-11 flex gap-12">

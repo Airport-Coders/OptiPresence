@@ -103,12 +103,14 @@ export function Hero() {
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <h1 className="text-4xl font-medium tracking-tight text-gray-900">
-              Check-in at your fingertips
+              Check-In at your fingertips
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              By leveraging insights from our network of industry insiders,
-              you’ll know exactly when to buy to maximize profit, and exactly
-              when to sell to avoid painful losses.
+              An innovative check-in tracking platform revolutionizing
+              attendance monitoring in educational and corporate institutions.
+              Utilizing the blockchain network, it ensures transparency,
+              security, and speed. This project offers an immutable and
+              fraud-proof check-in recording system.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <Button

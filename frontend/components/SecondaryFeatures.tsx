@@ -1,25 +1,26 @@
 import { useId } from 'react'
-
 import { Container } from './../components/Container'
 
 const features = [
   {
-    "name": "Connect to your wallet",
-    "description": "Seamlessly connect your digital wallet with unparalleled security measures, ensuring your transactions are safe and your identity remains anonymous.",
-    "icon": DeviceLockIcon
+    name: 'Connect to your wallet',
+    description:
+      'Seamlessly connect your digital wallet with unparalleled security measures, ensuring your transactions are safe and your identity remains anonymous.',
+    icon: DeviceLockIcon,
   },
   {
-    "name": "Do your check-in at the event",
-    "description": "Effortlessly check into your events using our intuitive system. Just a tap and you're in, giving you more time to enjoy what really matters.",
-    "icon": DeviceClockIcon
+    name: 'Check in at the event',
+    description:
+      "Effortlessly check into your events using our intuitive system. Just a tap and you're in, giving you more time to enjoy what really matters.",
+    icon: DeviceClockIcon,
   },
   {
-    name: "Join or create an event",
-    description: "Easily create or join events within our platform. Whether you're hosting or attending, our tools make the process straightforward and enjoyable.",
-    icon: DeviceListIcon
-  }
+    name: 'Join or create an event',
+    description:
+      "Easily create or join events within our platform. Whether you're hosting or attending, our tools make the process straightforward and enjoyable.",
+    icon: DeviceListIcon,
+  },
 ]
-
 
 function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -170,17 +171,18 @@ export function SecondaryFeatures() {
   return (
     <section
       id="secondary-features"
-      aria-label="Features for building a portfolio"
+      aria-label="Features for managing your events"
       className="py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Now is the time to build your portfolio.
+            Streamline Your Event Management.
           </h2>
           <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
+            Enhance your event participation with seamless check-in processes
+            and easy event management, ensuring a smooth and enjoyable
+            experience.
           </p>
         </div>
         <ul
