@@ -57,6 +57,7 @@ services:
     #        dockerfile: Dockerfile.Python
     #    command: python3 main.py
     #    volumes:
+    #        - ./offchain:/workspace
     #        - ./smartcontracts/packages/hardhat/deployments:/deployments
     #    depends_on:
     #        scaffold-deploy:

@@ -11,5 +11,6 @@ RUN python3 -m pip install --upgrade pip
 
 WORKDIR /workspace
 
-COPY /offchain/ /workspace/
+COPY /offchain/requirements.txt /workspace/requirements.txt
 RUN pip install -r requirements.txt
+
