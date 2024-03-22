@@ -9,7 +9,7 @@ from modules.event_processor import log_loop
 from services.facial_biometric import FaceComparatorService
 from services.geolocation import GeolocationService
 
-contract_path = OptimismSepoliaContractPath
+contract_path = CONTRACT_CheckInManager if CONTRACT_CheckInManager else OptimismSepoliaContractPath
 http_provider = HttpProviderAlchemy
 
 face_comparator_service = FaceComparatorService()
@@ -61,8 +61,6 @@ async def handle_event(event):
 
 
 async def main():
-
-    await wait_for_file(contract_path)
 
     event_filter = blockchain_client.contract.events.CheckInRequested.create_filter(fromBlock='latest')
 
