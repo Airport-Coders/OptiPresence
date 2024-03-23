@@ -11,6 +11,9 @@ import { NavLinks } from './../components/NavLinks'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useReadContract } from 'wagmi'
 import { useContracts } from '../providers/contracts'
+import { RegisterUserButtonModal } from './RegisterButton'
+import { getFileUrl } from '../modules/IPFS'
+import Image from 'next/image'
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -81,31 +84,28 @@ export function Header() {
           <div className="flex items-center gap-6">
             {isReadContractPending && address ? (
               <div className="flex items-center">
-                <Link
-                  className="rounded-lg bg-purple-700 px-6 py-1 text-lg font-bold text-white hover:bg-purple-800"
-                  href="/register"
-                >
-                  Register
-                </Link>
+                <RegisterUserButtonModal />
               </div>
             ) : (userInfoData as any)?.name ? (
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col items-center gap-2 md:flex-row">
                 <span className="text-lg font-semibold text-gray-900 md:text-sm">
                   Welcome back,{' '}
                   <span className="text-xl font-bold text-purple-700 md:text-lg">
                     {(userInfoData as any).name}
                   </span>
                 </span>
+                <Image
+                  src={getFileUrl((userInfoData as any).faceHash) as any}
+                  alt="User Face"
+                  className="h-10 w-10 rounded-full object-cover md:h-12 md:w-12"
+                  width={500}
+                  height={500}
+                />
               </div>
             ) : (
               address && (
                 <div className="flex items-center">
-                  <Link
-                    className="rounded-lg bg-purple-700 px-6 py-1 text-lg font-bold text-white hover:bg-purple-800"
-                    href="/register"
-                  >
-                    Register
-                  </Link>
+                  <RegisterUserButtonModal />
                 </div>
               )
             )}

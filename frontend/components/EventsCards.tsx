@@ -73,6 +73,9 @@ export function EventsCardsContainer() {
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
       {isReadContractPending && <p>Loading...</p>}
       {(allEventsData as any)?.map((event: any, index: number) => {
+        if (event.active === false) {
+          return null
+        }
         const eventWithIndex = { ...event, index: index }
         return <EventCard key={event.index} event={eventWithIndex} />
       })}

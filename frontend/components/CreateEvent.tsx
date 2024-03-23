@@ -45,7 +45,7 @@ function useLocation() {
 export function CreateEvent() {
   const { data: contractsData } = useContracts()
   const eventManager = contractsData?.EventManager
-  const { writeContract } = useWriteContract()
+  const { data: hash, isPending, isError, writeContract } = useWriteContract()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [name, setName] = useState('')
@@ -81,6 +81,18 @@ export function CreateEvent() {
       ],
     })
   }
+
+  useEffect(() => {
+    if (hash && !isPending && !isError) {
+      toast.promise(new Promise((resolve) => setTimeout(resolve, 2000)), {
+        loading: 'Creating event...',
+        success: 'Event created successfully!',
+        error: 'Error creating event!',
+      })
+      onClose()
+      location.reload()
+    }
+  }, [hash, isPending, isError, onClose])
 
   const handleFileChange = async (event: any) => {
     const file = event.target.files[0]

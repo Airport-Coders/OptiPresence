@@ -60,7 +60,6 @@ export function Checkin({ id }: { id: number }): React.ReactElement {
   const webcamRef = React.useRef<Webcam>(null)
   const location = useLocation()
   const [photo, setPhoto] = useState<string | null>(null)
-  const [ipfsHash, setIpfsHash] = useState<string | null>(null)
   const [transactionStarted, setTransactionStarted] = useState(false)
   const { data: contractsData } = useContracts()
   const { data: hash, isPending, isError, writeContract } = useWriteContract()
@@ -82,8 +81,8 @@ export function Checkin({ id }: { id: number }): React.ReactElement {
 
         if (ipfsHash) {
           toast.success('Photo uploaded successfully!')
-          setIpfsHash(ipfsHash)
-          requestCheckIn()
+          console.log(ipfsHash)
+          requestCheckIn(ipfsHash)
         }
       } catch (error) {
         toast.error('Error uploading photo. Try again later.')
@@ -93,19 +92,18 @@ export function Checkin({ id }: { id: number }): React.ReactElement {
     }
   }
 
-  const requestCheckIn = async () => {
-    if (!eventManager?.address || !ipfsHash || !location) {
-      console.error('Missing data for check-in.')
-      return
-    }
-
+  const requestCheckIn = async (ipfsHash: string) => {
     setTransactionStarted(true)
     try {
-      await writeContract({
-        address: eventManager.address,
-        abi: eventManager.abi,
+      writeContract({
+        address: eventManager?.address as any,
+        abi: eventManager?.abi,
         functionName: 'requestCheckIn',
-        args: [id, ipfsHash, `${location.latitude},${location.longitude}`],
+        args: [
+          id as any,
+          ipfsHash as any,
+          `${location?.latitude},${location?.longitude}` as any,
+        ],
       })
       toast.success('Check-in request sent!')
     } catch (error) {
@@ -115,6 +113,17 @@ export function Checkin({ id }: { id: number }): React.ReactElement {
       setTransactionStarted(false)
     }
   }
+
+  useEffect(() => {
+    if (hash && !isPending && !isError) {
+      toast.promise(new Promise((resolve) => setTimeout(resolve, 2000)), {
+        loading: 'Sending Check-In...',
+        success: 'Check-In request sent!',
+        error: 'Error sending Check-In request!',
+      })
+      router.push('/events')
+    }
+  }, [hash, isPending, isError, router])
 
   useEffect(() => {
     if (transactionStarted && !isPending && !isError) {
