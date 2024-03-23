@@ -9,6 +9,7 @@ export const uploadFile = async (fileToUpload: any) => {
       body: data,
     })
     const resData = await res.json()
+    console.log(resData)
     toast.success('File uploaded successfully! 🎉')
     return resData.IpfsHash
   } catch (e) {

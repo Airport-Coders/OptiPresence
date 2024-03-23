@@ -158,6 +158,7 @@ export function Header() {
                               Use Cases
                             </MobileNavLink>
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
+                            <MobileNavLink href="/events">Events</MobileNavLink>
                           </div>
                         </Popover.Panel>
                       </Popover.Overlay>

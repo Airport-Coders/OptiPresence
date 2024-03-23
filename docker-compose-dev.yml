@@ -1,24 +1,24 @@
 version: '3.8'
 services:
-    #scaffold-build:
-    #    extends:
-    #        file: docker-compose-common.yml
-    #        service: scaffold-build
+    scaffold-build:
+        extends:
+            file: docker-compose-common.yml
+            service: scaffold-build
 
     frontend-build:
         extends:
             file: docker-compose-common.yml
             service: frontend-build
 
-    #scaffold-deploy:
-    #    build:
-    #        context: .
-    #        dockerfile: Dockerfile.Node
-    #    command: yarn deploy --network optimismSepolia
-    #    volumes:
-    #        - ./smartcontracts:/workspace
-    #    env_file:
-    #        - .env
+    scaffold-deploy:
+        build:
+            context: .
+            dockerfile: Dockerfile.Node
+        command: yarn deploy --network optimismSepolia
+        volumes:
+            - ./smartcontracts:/workspace
+        env_file:
+            - .env
 
     scaffold-next:
         build:
@@ -29,9 +29,9 @@ services:
             - ./smartcontracts:/workspace
         ports:
             - '3000:3000'
-        #depends_on:
-        #    scaffold-deploy:
-        #        condition: service_completed_successfully
+        depends_on:
+            scaffold-deploy:
+                condition: service_completed_successfully
 
     frontend-serve:
         build:
@@ -46,21 +46,21 @@ services:
         depends_on:
             frontend-build:
                 condition: service_completed_successfully
-            #scaffold-deploy:
-            #    condition: service_completed_successfully
+            scaffold-deploy:
+                condition: service_completed_successfully
         env_file:
             - .env
 
-    #offchain:
-    #    build:
-    #        context: .
-    #        dockerfile: Dockerfile.Python
-    #    command: python3 main.py
-    #    volumes:
-    #        - ./offchain:/workspace
-    #        - ./smartcontracts/packages/hardhat/deployments:/deployments
-    #    depends_on:
-    #        scaffold-deploy:
-    #            condition: service_completed_successfully
-    #    env_file:
-    #        - .env
+    offchain:
+        build:
+            context: .
+            dockerfile: Dockerfile.Python
+        command: python3 main.py
+        volumes:
+            - ./offchain:/workspace
+            - ./smartcontracts/packages/hardhat/deployments:/deployments
+        depends_on:
+            scaffold-deploy:
+                condition: service_completed_successfully
+        env_file:
+            - .env

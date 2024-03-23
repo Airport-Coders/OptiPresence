@@ -5,6 +5,7 @@ const nextConfig = {
     NEXT_PUBLIC_CONTRACT_UserRegistry: process.env.CONTRACT_UserRegistry,
     NEXT_PUBLIC_CONTRACT_EventManager: process.env.CONTRACT_EventManager,
     NEXT_PUBLIC_CONTRACT_CheckInManager: process.env.CONTRACT_CheckInManager,
+    PINATA_JWT: process.env.PINATA_JWT,
   },
   images: {
     remotePatterns: [
