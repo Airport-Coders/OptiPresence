@@ -11,6 +11,10 @@ A user interaction diagram that shows the flow of the user interaction with the 
 
 <iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/Hy7zLRFrPoBZBa9R27vPeY"></iframe>
 
+## Overview technology architecture 🏗️
+
+<iframe style={{border: "none"}} width="800" height="450" src="https://whimsical.com/embed/HLWXKcEg7y4tS4nv4Gs2N1"></iframe>
+
 ## Folders 📁
 
 -   [smartcontracts](https://github.com/Airport-Coders/OptiPresence/tree/main/smartcontracts): Repository of [Scaffold-op](https://github.com/ethereum-optimism/scaffold-op) with the smart contracts and tests for the project. 📜
