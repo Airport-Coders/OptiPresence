@@ -20,7 +20,8 @@ You can find more information about the project in the [documentation](https://a
 
 -   [Documentation](https://airport-coders.github.io/OptiPresence/)
 -   [Demo deployment](https://optipresence.vercel.app/)
--   [Pitch video](https://www.youtube.com/)
+-   [Pitch video](https://youtu.be/C6Knx3dPk0w)
+-   [Demo video](https://www.youtube.com/watch?v=W0rheKsxDSw)
 
 ## Authors
 

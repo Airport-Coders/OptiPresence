@@ -11,6 +11,18 @@ slug: /
     <p>An innovative check-in tracking platform revolutionizing attendance monitoring in educational and corporate institutions. Utilizing the blockchain network, specifically <a href="https://optimism.io/">Optimism</a>, it ensures transparency, security, and speed. This project offers an immutable and fraud-proof check-in recording system.</p>
 </div>
 
+## Pitch video 🚀
+
+<div align="left">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/C6Knx3dPk0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+## Demo Video 📹
+
+<div align="left">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/W0rheKsxDSw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Key Problems solved 🚀
 
 -   **Eliminating "Buddy Punching"** 🚫👊: This is a common problem in workplace and academic environments where one person signs in for another, leading to inaccurate work records. The blockchain system of the project has integrated with facial biometric authentication and location, ensuring that only the authorized employee or student can record their own attendance.
